@@ -19,12 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 0}
-      - name: Download history
-        uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: mistakes-history
-          path: output/history/
+      - name: Download history from git
+        run: |
+          if [ -f "output/history/all_mistakes.json" ]; then
+            echo "History found from git checkout"
+          else
+            mkdir -p output/history
+            echo '{"mistakes":[],"last_updated":null}' > output/history/all_mistakes.json
+            echo "Created fresh history"
+          fi
       - name: Init history
         run: |
           mkdir -p output/history
@@ -74,5 +77,6 @@ jobs:
           if ! git diff --staged --quiet; then
             git commit -m "Update history - Run #${{ github.run_number }}"
             git pull --rebase
-            git push
+            git pull --rebase
+          git push
           fi
