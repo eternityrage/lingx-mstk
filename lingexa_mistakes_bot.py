@@ -4,6 +4,7 @@ Stop making these advanced English mistakes
 """
 
 import os, sys, json, random, asyncio, subprocess
+import re
 from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
@@ -45,35 +46,110 @@ def save_history(data):
     with open(MISTAKE_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
-def is_used(pid):
-    h = load_history()
-    return pid.lower().strip() in [x.lower().strip() for x in h.get("mistakes", [])]
+def extract_core_pair(pair_str):
+    parts = re.split(r'\s+vs\.?\s+', pair_str.lower().strip(), maxsplit=1)
+    if len(parts) < 2:
+        return None
+    left = parts[0].strip()
+    right = parts[1].strip()
+    left = re.sub(r'\(.*?\)', '', left).strip().rstrip('.,;:!?')
+    right = re.sub(r'\(.*?\)', '', right).strip().rstrip('.,;:!?')
+    left = re.split(r'\s+as\s+', left)[0].strip()
+    right = re.split(r'\s+as\s+', right)[0].strip()
+    lw = left.split()[0].strip('.,;:!?()[]{}')
+    rw = right.split()[0].strip('.,;:!?()[]{}')
+    if not lw or not rw:
+        return None
+    return (lw, rw)
+
+def is_semantically_used(pair_str, history_mistakes):
+    core = extract_core_pair(pair_str)
+    if not core:
+        return False
+    lw, rw = core
+    for h_pair in history_mistakes:
+        h_core = extract_core_pair(h_pair)
+        if not h_core:
+            continue
+        hl, hr = h_core
+        if lw == hl and rw == hr:
+            return True
+        if lw == hr and rw == hl:
+            return True
+    return False
 
 def add_to_history(ids):
     h = load_history()
-    for pid in ids:
-        if pid.lower().strip() not in [x.lower().strip() for x in h.get("mistakes", [])]:
-            h["mistakes"].append(pid.lower().strip())
+    existing_cores = set()
+    for existing in h.get("mistakes", []):
+        c = extract_core_pair(existing)
+        if c:
+            existing_cores.add(c)
+    for pid_str in ids:
+        core = extract_core_pair(pid_str)
+        if core and core not in existing_cores:
+            h["mistakes"].append(pid_str.strip().lower())
+            existing_cores.add(core)
+        elif not core:
+            if pid_str.strip().lower() not in [x.lower().strip() for x in h.get("mistakes", [])]:
+                h["mistakes"].append(pid_str.strip().lower())
     save_history(h)
 
 def generate_mistake_data(num=WORDS_PER_VIDEO):
-    max_attempts = 20
+    max_attempts = 60
     cats = [
-        "native speakers get this WRONG daily (I could care less vs I couldn't care less)",
-        "embarrassing professional mistakes (per diem, ad hoc, bona fide pronunciation)",
-        "words people use WRONG on LinkedIn/resumes everyday (utilize, leverage, actioned)",
-        "common grammar mistakes that make you sound uneducated (less vs fewer, me vs I)",
-        "words everyone mispronounces (nuclear, espresso, supposedly, etc.)",
-        "writing mistakes that ruin credibility (its/it's, your/you're in professional emails)",
-        "business jargon that's actually wrong (reach out, circle back, deep dive)",
-        "controversial grammar rules people argue about (split infinitives, prepositions)",
-        "spelling mistakes even smart people make (accommodate, embarrass, definitely)",
-        "everyone says 'I could care less' but the REAL phrase is opposite",
-        "commonly misused Latin phrases (per se, vice versa, eg/ie)",
-        "tricky subject-verb agreement errors everyone makes",
-        "false possessives and apostrophe disasters (1990's, CD's)",
-        "preposition errors even advanced speakers make",
+        "common grammar mistakes in professional emails and business writing",
+        "words that even native speakers mispronounce regularly",
+        "spelling errors in everyday words that look like typos",
+        "Latin and French loanwords that people misuse in English",
+        "preposition errors in casual conversation",
+        "subject-verb agreement mistakes in complex sentences",
+        "apostrophe catastrophes in plurals and possessives",
+        "false possessives and decade abbreviations gone wrong",
+        "formal vs informal word choices in professional contexts",
+        "idiom butchering: commonly misused sayings and expressions",
+        "hypercorrection: when trying to be correct makes it worse",
+        "countable vs uncountable noun errors with quantifiers",
+        "conditional tense mistakes in everyday speech",
+        "relative clause confusions in writing",
+        "double comparative and superlative errors",
+        "adverb placement mistakes that change meaning",
+        "commonly confused synonyms with different connotations",
+        "adjective order errors in English descriptions",
+        "phrasal verb mistakes that sound unnatural",
+        "collocation errors: word combinations that don't work",
+        "register mistakes: too formal or too casual for the context",
+        "hedging language misuse (kind of, sort of, basically)",
+        "redundant phrases people use daily without realizing",
+        "pleonasms and tautologies in professional writing",
+        "false singulars and false plurals in academic English",
+        "gender-neutral language confusions in modern writing",
+        "contraction misuse in formal documents",
+        "comma splice and run-on sentence errors",
+        "dangling modifiers that change sentence meaning",
+        "parallel structure errors in lists and comparisons",
+        "passive voice overuse in professional communication",
+        "split infinitive myths and actual rules",
+        "ending sentences with prepositions: myths vs reality",
+        "singular they and pronoun agreement debates",
+        "correlative conjunction mismatches (either/or, neither/nor)",
+        "subjunctive mood errors in formal writing",
+        "article usage with abstract nouns and proper nouns",
+        "zero article vs definite vs indefinite article choices",
+        "time expression preposition errors (in/on/at, since/for)",
+        "direction and movement preposition confusions",
+        "linking verb vs action verb distinctions",
+        "gradable vs non-gradable adjective intensifier mistakes",
+        "infinitive vs gerund after specific verbs",
+        "direct vs indirect speech tense backshift errors",
+        "emigrate vs immigrate movement preposition errors",
+        "between vs among and other grouping preposition errors",
+        "fewer vs less and other quantity word confusions",
+        "who vs whom: actual usage in modern English",
+        "that vs which in restrictive vs non-restrictive clauses",
+        "affect vs effect and other sound-alike word confusions",
     ]
+    random.shuffle(cats)
     collected = []
     for attempt in range(max_attempts):
         try:
@@ -84,8 +160,13 @@ def generate_mistake_data(num=WORDS_PER_VIDEO):
             remaining = num - len(collected)
             print(f"[api] Attempt {attempt + 1}: {cat[:50]}... (need {remaining} more)")
             h = load_history()
-            used_set = set(h.get("mistakes", [])[-50:])
-            used_str = ", ".join(used_set) if used_set else "(none)"
+            recent = h.get("mistakes", [])[-50:]
+            used_set = set()
+            for hp in recent:
+                c = extract_core_pair(hp)
+                if c:
+                    used_set.add(c)
+            used_str = ", ".join(recent) if recent else "(none)"
             prompt = f"""Generate 15 interesting English mistakes from: {cat}
 
 CRITICAL: These should be mistakes that EVEN NATIVE SPEAKERS commonly make. The kind that makes people say "Wait, I've been saying it wrong my whole life?"
@@ -102,7 +183,7 @@ REQUIREMENTS:
 - 'tip' field: a UNFORGETTABLE memory trick in ONE sentence
 - Pairs that professionals actually get wrong
 Return ONLY the JSON array.""" 
-            payload = {"model": AI_MODEL, "messages": [{"role": "system", "content": "Return ONLY valid JSON arrays."}, {"role": "user", "content": prompt}], "temperature": 1.3}
+            payload = {"model": AI_MODEL, "messages": [{"role": "system", "content": "Return ONLY valid JSON arrays."}, {"role": "user", "content": prompt}], "temperature": 1.6}
             resp = requests.post(url, headers=headers, json=payload, timeout=60)
             resp.raise_for_status()
             content = resp.json()["choices"][0]["message"]["content"].strip()
@@ -114,15 +195,23 @@ Return ONLY the JSON array."""
             if not isinstance(items, list):
                 raise ValueError("Not a list")
             fresh = []
+            seen_this_run = set()
             for item in items:
                 pair = item.get("pair", "").strip()
                 if not pair:
                     continue
-                pid = pair
-                if pid.lower() in used_set:
+                core = extract_core_pair(pair)
+                if core and core in seen_this_run:
                     continue
+                if core and core in used_set:
+                    continue
+                h = load_history()
+                if is_semantically_used(pair, h.get("mistakes", [])):
+                    continue
+                if core:
+                    seen_this_run.add(core)
+                    used_set.add(core)
                 fresh.append(item)
-                used_set.add(pid.lower())
                 if len(collected) + len(fresh) >= num:
                     break
             collected.extend(fresh)
