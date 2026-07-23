@@ -135,6 +135,7 @@ def upload_to_instagram(video_path, caption, is_story=False):
         
         if not is_story:
             container_params['caption'] = caption_limited
+        container_params['share_to_feed'] = 'false'
             container_params['share_to_feed'] = False
         
         container_resp = requests.post(f"{api_base}/{user_id}/media", params=container_params, timeout=60)
@@ -203,7 +204,29 @@ def upload_to_instagram(video_path, caption, is_story=False):
         
         delete_github_temp_file(repo, token, remote_path, branch)
         
-        return {'id': media_id, 'platform': 'instagram', 'status': 'success'}
+        
+    if not is_story:
+        try:
+            print("[instagram] Also uploading as Story...")
+            story_params = {'media_type': 'STORIES', 'video_url': video_url, 'access_token': access_token}
+            sr = requests.post(api_base + "/" + ig_user_id + "/media", params=story_params, timeout=60)
+            if sr.status_code == 200:
+                sc_id = sr.json().get('id')
+                for _ in range(8):
+                    time.sleep(5)
+                    ssr = requests.get(api_base + "/" + sc_id, params={'fields': 'status_code,status', 'access_token': access_token}, timeout=30)
+                    ssc = ssr.json().get('status_code') or ssr.json().get('status', 'UNKNOWN')
+                    if ssc == 'FINISHED':
+                        sp = requests.post(api_base + "/" + ig_user_id + "/media_publish", params={'creation_id': sc_id, 'access_token': access_token}, timeout=60)
+                        if sp.status_code == 200:
+                            print(f"[instagram] Story published! ID:", sp.json().get('id'))
+                        break
+                    elif ssc == 'ERROR':
+                        break
+        except Exception as e:
+            print(f"[instagram] Story skipped:", e)
+    
+    return {'id': media_id, 'platform': 'instagram', 'status': 'success'}
         
     except Exception as e:
         print(f"[instagram] Error: {e}")
