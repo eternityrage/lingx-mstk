@@ -73,7 +73,10 @@ def upload_to_all_platforms(video_path, caption, word, reel_data=None):
     results = {"timestamp": datetime.now().isoformat(), "word": word, "video": video_path, "uploads": {}, "platforms_attempted": [], "platforms_successful": [], "platforms_skipped": [], "platforms_failed": []}
     print(f"\n{'='*80}\n{CHANNEL_NAME.upper()} - MULTI-PLATFORM UPLOAD\n{'='*80}")
     if not Path(video_path).exists():
-        
+        print(f"[ERROR] Video file not found: {video_path}")
+        return results
+
+    
     # === STANDARDIZED STATUS REPORT ===
     print("\n" + "=" * 60)
     print("UPLOAD STATUS REPORT")
