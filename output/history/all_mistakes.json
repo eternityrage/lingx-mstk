@@ -193,7 +193,9 @@
     "might have vs might of",
     "regret to tell vs. regret telling",
     "need doing vs. need to do",
-    "irregular past tense"
+    "irregular past tense",
+    "irregular verb past tense errors (forgotten vs forgot)",
+    "irregular verb past tense errors (gone vs went)"
   ],
-  "last_updated": "2026-08-05T19:27:59.792279"
+  "last_updated": "2026-08-06T07:55:12.609215"
 }
