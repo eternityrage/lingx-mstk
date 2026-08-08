@@ -215,7 +215,9 @@
     "imperfect passive vs. active voice",
     "ambiguous agents vs. clear subject",
     "their writing style is too complex vs their writing style are too complex",
-    "a number of students are vs the number of students is"
+    "a number of students are vs the number of students is",
+    "irregular past tense (forgot) vs. regular past tense (forgetted)",
+    "irregular past tense (went) vs. irregular past participle (gone)"
   ],
-  "last_updated": "2026-08-08T10:35:05.732736"
+  "last_updated": "2026-08-08T14:30:28.474041"
 }
