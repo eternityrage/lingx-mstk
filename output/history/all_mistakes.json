@@ -213,7 +213,9 @@
     "my parents's 70s style vs. my parents' 70s style",
     "a bad 80's movie vs. a bad 80s movie",
     "imperfect passive vs. active voice",
-    "ambiguous agents vs. clear subject"
+    "ambiguous agents vs. clear subject",
+    "their writing style is too complex vs their writing style are too complex",
+    "a number of students are vs the number of students is"
   ],
-  "last_updated": "2026-08-08T03:15:18.305639"
+  "last_updated": "2026-08-08T10:35:05.732736"
 }
