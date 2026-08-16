@@ -290,7 +290,9 @@
     "misspelled common words: definitely vs definately",
     "homophone confusion: their vs there",
     "feel vs feel like",
-    "sound vs sound like"
+    "sound vs sound like",
+    "pronoun agreement with singular 'they' (incorrect usage)",
+    "pronoun agreement with generic singular noun (incorrect usage)"
   ],
-  "last_updated": "2026-08-16T06:50:59.943914"
+  "last_updated": "2026-08-16T10:24:39.838001"
 }
