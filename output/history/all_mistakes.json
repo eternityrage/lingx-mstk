@@ -368,7 +368,9 @@
     "escape escape vs. escape",
     "spoken to vs. spoke",
     "either... nor... vs. neither... nor...",
-    "either... or... with a negative verb"
+    "either... or... with a negative verb",
+    "suggest that he go vs. suggest that he goes",
+    "it is important that she study vs. it is important that she studies"
   ],
-  "last_updated": "2026-08-25T06:58:31.575116"
+  "last_updated": "2026-08-25T10:34:27.627602"
 }
