@@ -451,7 +451,9 @@
     "wreak havoc vs. wreck havoc",
     "extremely good vs. extreme good",
     "insist that it is true vs. insist that it be true",
-    "prefer that it was done vs. prefer that it be done"
+    "prefer that it was done vs. prefer that it be done",
+    "zero article with abstract nouns (general sense)",
+    "definite article with unique entities"
   ],
-  "last_updated": "2026-09-03T06:37:20.357439"
+  "last_updated": "2026-09-03T11:00:17.334980"
 }
