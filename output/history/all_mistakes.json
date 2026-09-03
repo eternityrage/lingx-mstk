@@ -453,7 +453,9 @@
     "insist that it is true vs. insist that it be true",
     "prefer that it was done vs. prefer that it be done",
     "zero article with abstract nouns (general sense)",
-    "definite article with unique entities"
+    "definite article with unique entities",
+    "going at vs. going to",
+    "exit out of vs. exit"
   ],
-  "last_updated": "2026-09-03T11:00:17.334980"
+  "last_updated": "2026-09-03T14:12:43.563492"
 }
