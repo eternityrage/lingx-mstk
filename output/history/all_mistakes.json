@@ -475,7 +475,9 @@
     "irregular verb confusion: 'lay' vs 'lie'",
     "superfluous 'of' with 'off of'",
     "most important vs more important",
-    "more unique vs unique"
+    "more unique vs unique",
+    "zero article with abstract nouns (general sense) vs. the + abstract noun (general)",
+    "definite article with unique entities vs. no article with unique entities"
   ],
-  "last_updated": "2026-09-05T13:17:24.640176"
+  "last_updated": "2026-09-05T16:32:15.475782"
 }
