@@ -520,7 +520,9 @@
     "false possessive: 'the 2020's' vs. 'the 2020s'",
     "false possessive: 'my parents's car' vs. 'my parents' car'",
     "zero article vs. a/an + uncountable noun",
-    "zero article + certain idiomatic phrases vs. articles in idiomatic phrases"
+    "zero article + certain idiomatic phrases vs. articles in idiomatic phrases",
+    "irregular past participle: 'shake' (shaken vs. shook)",
+    "irregular past participle: 'throw' (thrown vs. threw)"
   ],
-  "last_updated": "2026-09-11T06:44:03.904202"
+  "last_updated": "2026-09-11T11:00:28.382774"
 }
