@@ -661,7 +661,9 @@
     "comma splice: coordinating conjunction omission",
     "comma splice: improper subordination",
     "especially vs except for",
-    "consequently vs consequent"
+    "consequently vs consequent",
+    "either/or mismatch",
+    "neither/nor mismatch"
   ],
-  "last_updated": "2026-09-26T17:37:01.470801"
+  "last_updated": "2026-09-26T20:40:29.492556"
 }
