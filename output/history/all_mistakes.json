@@ -665,7 +665,9 @@
     "either/or mismatch",
     "neither/nor mismatch",
     "dangling modifier - unclear subject 1",
-    "dangling modifier - unclear subject 2"
+    "dangling modifier - unclear subject 2",
+    "need help vs needs helping",
+    "fail doing vs fail to do"
   ],
-  "last_updated": "2026-09-27T07:15:06.166584"
+  "last_updated": "2026-09-27T11:48:36.095310"
 }
