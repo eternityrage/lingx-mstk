@@ -703,7 +703,9 @@
     "the vs. indefinite article (superlatives)",
     "a vs. no article (possessives)",
     "irregular verb past participle error (common verbs)",
-    "irregular past participle error (prove)"
+    "irregular past participle error (prove)",
+    "a/an vs. the with generic singular nouns",
+    "dangling participle clause"
   ],
-  "last_updated": "2026-10-01T07:54:59.935555"
+  "last_updated": "2026-10-01T12:54:14.078742"
 }
