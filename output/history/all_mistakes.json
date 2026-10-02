@@ -710,7 +710,9 @@
     "escapade vs. escape",
     "neither/or mismatch",
     "'a' vs. 'the' with learned skills/subjects",
-    "'a' vs. zero article with uncountable nouns used abstractly"
+    "'a' vs. zero article with uncountable nouns used abstractly",
+    "singular they: incorrect agreement vs. singular they: correct usage",
+    "pronoun agreement: incorrect gendered vs. pronoun agreement: correct neutral"
   ],
-  "last_updated": "2026-10-01T22:25:04.596534"
+  "last_updated": "2026-10-02T07:45:37.654061"
 }
