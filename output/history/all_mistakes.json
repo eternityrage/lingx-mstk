@@ -714,7 +714,9 @@
     "singular they: incorrect agreement vs. singular they: correct usage",
     "pronoun agreement: incorrect gendered vs. pronoun agreement: correct neutral",
     "what are you looking at? vs. whom are you looking at?",
-    "i and him vs. he and i"
+    "i and him vs. he and i",
+    "a lot of/lots of vs. much/many (informal context)",
+    "enough vs. enough of (with countables)"
   ],
-  "last_updated": "2026-10-02T16:14:27.432936"
+  "last_updated": "2026-10-02T18:58:23.166285"
 }
