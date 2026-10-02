@@ -712,7 +712,9 @@
     "'a' vs. 'the' with learned skills/subjects",
     "'a' vs. zero article with uncountable nouns used abstractly",
     "singular they: incorrect agreement vs. singular they: correct usage",
-    "pronoun agreement: incorrect gendered vs. pronoun agreement: correct neutral"
+    "pronoun agreement: incorrect gendered vs. pronoun agreement: correct neutral",
+    "what are you looking at? vs. whom are you looking at?",
+    "i and him vs. he and i"
   ],
-  "last_updated": "2026-10-02T12:17:17.186236"
+  "last_updated": "2026-10-02T16:14:27.432936"
 }
