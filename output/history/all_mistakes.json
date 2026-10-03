@@ -724,7 +724,8 @@
     "irregular verb past participle error (heard vs heardened)",
     "irregular verb past participle error (drunk vs drank)",
     "everyone vs. everyone else",
-    "nonexistent gender agreement with compounds"
+    "nonexistent gender agreement with compounds",
+    "singular 'they' with plural verb"
   ],
-  "last_updated": "2026-10-03T14:36:00.505744"
+  "last_updated": "2026-10-03T17:45:36.852915"
 }
