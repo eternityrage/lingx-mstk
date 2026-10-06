@@ -56,25 +56,31 @@ def extract_core_pair(pair_str):
     right = re.sub(r'\(.*?\)', '', right).strip().rstrip('.,;:!?')
     left = re.split(r'\s+as\s+', left)[0].strip()
     right = re.split(r'\s+as\s+', right)[0].strip()
-    lw = left.split()[0].strip('.,;:!?()[]{}')
-    rw = right.split()[0].strip('.,;:!?()[]{}')
-    if not lw or not rw:
+    l_tokens = [w.strip('.,;:!?()[]{}') for w in left.split() if w.strip('.,;:!?()[]{}')]
+    r_tokens = [w.strip('.,;:!?()[]{}') for w in right.split() if w.strip('.,;:!?()[]{}')]
+    if not l_tokens or not r_tokens:
         return None
+    lw = " ".join(l_tokens)
+    rw = " ".join(r_tokens)
     return (lw, rw)
 
 def is_semantically_used(pair_str, history_mistakes):
+    clean_p = pair_str.lower().strip()
+    for h in history_mistakes:
+        if clean_p == h.lower().strip():
+            return True
     core = extract_core_pair(pair_str)
     if not core:
         return False
     lw, rw = core
     for h_pair in history_mistakes:
+        if clean_p == h_pair.lower().strip():
+            return True
         h_core = extract_core_pair(h_pair)
         if not h_core:
             continue
         hl, hr = h_core
-        if lw == hl and rw == hr:
-            return True
-        if lw == hr and rw == hl:
+        if (lw == hl and rw == hr) or (lw == hr and rw == hl):
             return True
     return False
 
@@ -220,10 +226,27 @@ Return ONLY the JSON array."""
                 return collected[:num]
         except Exception as e:
             print(f"[api] Attempt {attempt + 1} FAILED: {e}")
+    if len(collected) < num:
+        print("[fallback] Checking curated fallback mistakes bank for unused pairs...")
+        fallback_bank = [
+            {"pair": "comprise vs compose", "wrong": "The team is comprised of ten players.", "right": "The team is composed of ten players.", "meaning": "The whole comprises the parts, while parts compose the whole.", "example_wrong": "The book is comprised of five chapters.", "example_right": "Five chapters compose the book.", "tip": "Remember: the whole comprises the parts, parts compose the whole."},
+            {"pair": "hone in vs home in", "wrong": "Let's hone in on the target.", "right": "Let's home in on the target.", "meaning": "To 'home in' means to move toward a target; 'hone' means to sharpen a blade or skill.", "example_wrong": "The missile honed in on the beacon.", "example_right": "The missile homed in on the beacon.", "tip": "Missiles home in on a target like homing pigeons."},
+            {"pair": "rein in vs reign in", "wrong": "We need to reign in spending.", "right": "We need to rein in spending.", "meaning": "The idiom comes from horse reins, meaning to control or restrict.", "example_wrong": "The manager reigned in the budget.", "example_right": "The manager reined in the budget.", "tip": "Pull the reins to steer or slow down a galloping horse."},
+            {"pair": "toe the line vs tow the line", "wrong": "Employees must tow the line.", "right": "Employees must toe the line.", "meaning": "To 'toe the line' means to conform strictly to rules, originating from runners placing toes on the starting line.", "example_wrong": "He refused to tow the line.", "example_right": "He refused to toe the line.", "tip": "Think of placing your toes right on the starting line."},
+            {"pair": "baited breath vs bated breath", "wrong": "We waited with baited breath.", "right": "We waited with bated breath.", "meaning": "'Bated' is short for abated, meaning breathless with anticipation; 'bait' is food to trap animals.", "example_wrong": "Crowds waited with baited breath.", "example_right": "Crowds waited with bated breath.", "tip": "'Bated' comes from abated—meaning your breath is held or reduced."},
+        ]
+        h = load_history()
+        history_mistakes = h.get("mistakes", [])
+        for fb in fallback_bank:
+            if not is_semantically_used(fb["pair"], history_mistakes) and not is_semantically_used(fb["pair"], [m["pair"] for m in collected]):
+                collected.append(fb)
+                print(f"  [fallback] Added unused curated mistake: '{fb['pair']}'")
+                if len(collected) >= num:
+                    break
     if collected:
         add_to_history([m["pair"] for m in collected])
         return collected
-    raise RuntimeError("API failed")
+    raise RuntimeError("API failed and no unused fallbacks available")
 
 def create_background():
     from PIL import Image, ImageDraw
