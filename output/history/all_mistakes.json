@@ -857,7 +857,9 @@
     "lists with differing verb tenses",
     "comparisons with mismatched noun types",
     "a experience vs. an experience",
-    "a home vs. home"
+    "a home vs. home",
+    "irregular past participle: 'have went' vs. 'have gone'",
+    "irregular past participle: 'have ate' vs. 'have eaten'"
   ],
-  "last_updated": "2026-10-17T06:19:32.383865"
+  "last_updated": "2026-10-17T10:27:30.689406"
 }
