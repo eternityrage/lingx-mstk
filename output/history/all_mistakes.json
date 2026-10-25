@@ -939,7 +939,9 @@
     "decade abbreviation: 'the 80s' vs. 'the eighties'",
     "decade abbreviation: 'the '80s' vs. 'the eighties'",
     "active voice with hidden agent vs passive voice with hidden agent",
-    "passive voice for weak excuses vs active voice for ownership"
+    "passive voice for weak excuses vs active voice for ownership",
+    "passive for unclear responsibility vs. active for clarity",
+    "overuse of 'it is believed' vs. direct attribution"
   ],
-  "last_updated": "2026-10-25T11:06:31.979382"
+  "last_updated": "2026-10-25T14:08:52.662205"
 }
