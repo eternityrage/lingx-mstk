@@ -941,7 +941,9 @@
     "active voice with hidden agent vs passive voice with hidden agent",
     "passive voice for weak excuses vs active voice for ownership",
     "passive for unclear responsibility vs. active for clarity",
-    "overuse of 'it is believed' vs. direct attribution"
+    "overuse of 'it is believed' vs. direct attribution",
+    "went through vs. went to",
+    "up upon vs. up on"
   ],
-  "last_updated": "2026-10-25T14:08:52.662205"
+  "last_updated": "2026-10-25T17:24:06.716533"
 }
