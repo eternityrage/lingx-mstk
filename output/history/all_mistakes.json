@@ -937,7 +937,9 @@
     "their mistakes vs. there mistakes",
     "everyone's is vs. everyone is",
     "decade abbreviation: 'the 80s' vs. 'the eighties'",
-    "decade abbreviation: 'the '80s' vs. 'the eighties'"
+    "decade abbreviation: 'the '80s' vs. 'the eighties'",
+    "active voice with hidden agent vs passive voice with hidden agent",
+    "passive voice for weak excuses vs active voice for ownership"
   ],
-  "last_updated": "2026-10-25T07:03:15.305194"
+  "last_updated": "2026-10-25T11:06:31.979382"
 }
