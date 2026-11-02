@@ -1015,7 +1015,9 @@
     "commma splice: joining independent clauses with only a comma",
     "run-on: fused sentences without punctuation",
     "i would have gone vs. i'd of gone (pronunciation vs. grammar)",
-    "never doubted vs. never of doubted (unnecessary 'of')"
+    "never doubted vs. never of doubted (unnecessary 'of')",
+    "everyone else's vs. everyone else",
+    "reflexive pronouns for emphasis (misuse)"
   ],
-  "last_updated": "2026-11-01T21:43:17.628451"
+  "last_updated": "2026-11-02T08:30:30.373599"
 }
