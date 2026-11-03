@@ -1027,7 +1027,9 @@
     "misplaced correlative conjunctions",
     "incorrect polarity with 'either/or'",
     "normally vs normally (lost/confused word order) — 'for free' vs 'for free of charge'",
-    "inexpensive vs cheap"
+    "inexpensive vs cheap",
+    "both a and b vs a and both b",
+    "not only a but also b vs not only a but b"
   ],
-  "last_updated": "2026-11-03T08:44:18.085436"
+  "last_updated": "2026-11-03T13:57:46.643861"
 }
