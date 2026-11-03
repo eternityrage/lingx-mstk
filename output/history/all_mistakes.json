@@ -1031,7 +1031,9 @@
     "both a and b vs a and both b",
     "not only a but also b vs not only a but b",
     "everybody have vs everybody has",
-    "each of them have vs each of them has"
+    "each of them have vs each of them has",
+    "walking to the office, the rain soaked my jacket. vs. walking to the office, i got my jacket soaked by the rain.",
+    "after finishing the test, the room went quiet. vs. after finishing the test, i made the room go quiet."
   ],
-  "last_updated": "2026-11-03T17:37:04.732464"
+  "last_updated": "2026-11-03T20:25:46.613649"
 }
