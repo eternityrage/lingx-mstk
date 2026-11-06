@@ -1061,7 +1061,9 @@
     "he said, “i am tired.” vs he said (that) he was tired.",
     "she said, “i can’t come.” vs she said (that) she couldn’t come.",
     "there is too much people in the room vs there are too many people in the room",
-    "i don’t have many money vs i don’t have much money"
+    "i don’t have many money vs i don’t have much money",
+    "lend vs borrow",
+    "receipt vs receipt paper (counting)"
   ],
-  "last_updated": "2026-11-06T17:15:04.417305"
+  "last_updated": "2026-11-06T20:14:52.028370"
 }
