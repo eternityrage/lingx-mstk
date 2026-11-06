@@ -1063,7 +1063,9 @@
     "there is too much people in the room vs there are too many people in the room",
     "i don’t have many money vs i don’t have much money",
     "lend vs borrow",
-    "receipt vs receipt paper (counting)"
+    "receipt vs receipt paper (counting)",
+    "neither...nor with not (double-negation confusion)",
+    "neither...nor split with 'nor...neither'"
   ],
-  "last_updated": "2026-11-06T20:14:52.028370"
+  "last_updated": "2026-11-06T22:43:59.312848"
 }
