@@ -1065,7 +1065,9 @@
     "lend vs borrow",
     "receipt vs receipt paper (counting)",
     "neither...nor with not (double-negation confusion)",
-    "neither...nor split with 'nor...neither'"
+    "neither...nor split with 'nor...neither'",
+    "running down the street, my phone fell out of my pocket.",
+    "after reading the instructions, the problem was solved."
   ],
-  "last_updated": "2026-11-06T22:43:59.312848"
+  "last_updated": "2026-11-07T07:54:50.673157"
 }
