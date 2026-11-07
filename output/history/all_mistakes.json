@@ -1073,7 +1073,9 @@
     "linking verb: it tastes good vs action verb: it is tasting good",
     "linking verb vs action verb: it feels soft vs it is feeling soft",
     "he asked me, “what are you doing?” vs he asked me what i was doing",
-    "she said, “i’m busy, so i can’t talk.” vs she said (that) she was busy, so she couldn’t talk"
+    "she said, “i’m busy, so i can’t talk.” vs she said (that) she was busy, so she couldn’t talk",
+    "while driving, the road was icy. vs while i was driving, the road was icy.",
+    "after finishing the test, the room went quiet. vs after i finished the test, the room went quiet."
   ],
-  "last_updated": "2026-11-07T18:28:23.443548"
+  "last_updated": "2026-11-07T21:28:28.121652"
 }
