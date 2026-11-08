@@ -1077,7 +1077,9 @@
     "while driving, the road was icy. vs while i was driving, the road was icy.",
     "after finishing the test, the room went quiet. vs after i finished the test, the room went quiet.",
     "apostrophes in plural nouns (cars) vs in possessives (car's)",
-    "apostrophe in plural abbreviations (cds) vs possessive (cd’s)"
+    "apostrophe in plural abbreviations (cds) vs possessive (cd’s)",
+    "singular they (debated) vs singular he/she (sometimes overcorrected)",
+    "singular they (debated) vs singular it (some natives use it)"
   ],
-  "last_updated": "2026-11-08T08:10:58.766438"
+  "last_updated": "2026-11-08T13:06:10.794328"
 }
