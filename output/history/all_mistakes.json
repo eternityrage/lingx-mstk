@@ -1121,7 +1121,9 @@
     "it sounds good vs it is sounding good",
     "it looks nice vs it is looking nice",
     "arrive at a place vs arrive in a place",
-    "in the corner vs on the corner"
+    "in the corner vs on the corner",
+    "running late, the bus was missed. vs since i was running late, i missed the bus.",
+    "after finishing the report, the meeting started. vs after i finished the report, the meeting started."
   ],
-  "last_updated": "2026-11-12T21:18:25.383186"
+  "last_updated": "2026-11-12T23:14:46.406038"
 }
