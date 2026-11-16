@@ -1153,7 +1153,9 @@
     "a big red car vs a red big car",
     "an old wooden house vs a wooden old house",
     "advance planning vs planned in advance",
-    "free gift vs gift"
+    "free gift vs gift",
+    "at vs in (time of day)",
+    "in vs with (materials/ingredients)"
   ],
-  "last_updated": "2026-11-15T22:29:52.684660"
+  "last_updated": "2026-11-16T08:42:58.539497"
 }
