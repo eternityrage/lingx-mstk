@@ -1277,7 +1277,9 @@
     "either ... or vs neither ... or",
     "either ... or vs either ... nor",
     "kind of + singular noun (\"it is kind of a challenge\") vs kind of + plural idea (\"it is kind of challenging\")",
-    "sort of + singular noun (\"it is sort of a plan\") vs sort of + plural idea (\"it is sort of planned\")"
+    "sort of + singular noun (\"it is sort of a plan\") vs sort of + plural idea (\"it is sort of planned\")",
+    "either ... or vs neither ... nor (swapping the polarity)",
+    "either ... or vs either ... no (wrong contraction)"
   ],
-  "last_updated": "2026-11-28T15:20:38.082060"
+  "last_updated": "2026-11-28T17:59:56.878043"
 }
